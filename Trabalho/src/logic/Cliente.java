@@ -46,7 +46,7 @@ public class Cliente {
 
      while (teclado.hasNextLine()) {
 
-       saida.println("O usuário " + ip + " disse: " + teclado.nextLine());
+       saida.println("Usuário " + ip + ": " + teclado.nextLine());
 
      }
      

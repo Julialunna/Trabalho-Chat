@@ -31,7 +31,7 @@ public class Recebedor implements Runnable {
         String msg = s.nextLine();
         String[] h = msg.split(" ");        
 
-        if(!h[2].equals(this.ip)){
+        if(!h[1].equals(this.ip)){
           System.out.println(msg);
         }
         
