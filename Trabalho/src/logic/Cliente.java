@@ -37,7 +37,7 @@ public class Cliente {
      /*for (Byte s : cliente.getInetAddress().getAddress()) {
       this.ip += s;
      }*/
-     this.ip = cliente.getRemoteSocketAddress().toString();
+     this.ip = cliente.getLocalAddress().toString();
      System.out.println(ip);
  
      // thread para receber mensagens do servidor
