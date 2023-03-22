@@ -39,7 +39,7 @@ public class Cliente {
      }
  
      // thread para receber mensagens do servidor
-     Recebedor r = new Recebedor(cliente.getInputStream(), cliente.getInetAddress().getHostAddress());
+     Recebedor r = new Recebedor(cliente.getInputStream(), ip);
      new Thread(r).start();
      
      // lê msgs do teclado e manda pro servidor
