@@ -17,6 +17,7 @@ public class Cliente {
    public static void main(String[] args) 
          throws UnknownHostException, IOException {
      // dispara cliente
+     new ChatInterface();
      new Cliente("10.0.0.16", 12345).executa();
    }
    
@@ -46,7 +47,7 @@ public class Cliente {
 
      while (teclado.hasNextLine()) {
 
-       saida.println("Usuário " + ip + ": " + teclado.nextLine());
+       saida.println("Usuário " + ip + " : " + teclado.nextLine());
 
      }
      
