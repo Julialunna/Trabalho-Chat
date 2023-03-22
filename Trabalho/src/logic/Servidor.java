@@ -55,8 +55,8 @@ public class Servidor {
  
    public void distribuiMensagem(String msg) {
      // envia msg para todo mundo
-     for (PrintStream cliente : this.clientes) {
-       cliente.println(msg);
+     for (PrintStream cliente : this.clientes) {        
+        cliente.println(msg);
      }
    }
  }

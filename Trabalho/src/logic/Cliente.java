@@ -17,7 +17,7 @@ public class Cliente {
    public static void main(String[] args) 
          throws UnknownHostException, IOException {
      // dispara cliente
-     new Cliente("127.0.0.1", 12345).executa();
+     new Cliente("10.0.0.16", 12345).executa();
    }
    
    private String host;
@@ -33,14 +33,17 @@ public class Cliente {
      System.out.println("O cliente se conectou ao servidor!");
  
      // thread para receber mensagens do servidor
-     Recebedor r = new Recebedor(cliente.getInputStream());
+     Recebedor r = new Recebedor(cliente.getInputStream(), cliente.getInetAddress().getHostAddress());
      new Thread(r).start();
      
      // lê msgs do teclado e manda pro servidor
      Scanner teclado = new Scanner(System.in);
      PrintStream saida = new PrintStream(cliente.getOutputStream());
+
      while (teclado.hasNextLine()) {
-       saida.println(teclado.nextLine());
+
+       saida.println("O usuário " + cliente.getInetAddress().getHostAddress() + " disse: " + teclado.nextLine());
+
      }
      
      saida.close();
