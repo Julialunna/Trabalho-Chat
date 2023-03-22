@@ -34,11 +34,7 @@ public class Cliente {
      Socket cliente = new Socket(this.host, this.porta);
      System.out.println("O cliente se conectou ao servidor!");
 
-     /*for (Byte s : cliente.getInetAddress().getAddress()) {
-      this.ip += s;
-     }*/
-     this.ip = cliente.getLocalAddress().toString();
-     System.out.println(ip);
+     this.ip = cliente.getLocalAddress().toString().replace("/","");
  
      // thread para receber mensagens do servidor
      Recebedor r = new Recebedor(cliente.getInputStream(), ip);
@@ -49,7 +45,6 @@ public class Cliente {
      PrintStream saida = new PrintStream(cliente.getOutputStream());
 
      while (teclado.hasNextLine()) {
-
 
        saida.println("O usuário " + ip + " disse: " + teclado.nextLine());
 
