@@ -34,9 +34,11 @@ public class Cliente {
      Socket cliente = new Socket(this.host, this.porta);
      System.out.println("O cliente se conectou ao servidor!");
 
-     for (Byte s : cliente.getInetAddress().getAddress()) {
+     /*for (Byte s : cliente.getInetAddress().getAddress()) {
       this.ip += s;
-     }
+     }*/
+     this.ip = cliente.getRemoteSocketAddress().toString();
+     System.out.println(ip);
  
      // thread para receber mensagens do servidor
      Recebedor r = new Recebedor(cliente.getInputStream(), ip);
