@@ -29,16 +29,9 @@ public class Recebedor implements Runnable {
      
      while (s.hasNextLine()) {
         String msg = s.nextLine();
-        String[] h = msg.split(" ");
+        String[] h = msg.split(" ");        
 
-        /*System.out.println("Teste");
-        System.out.println(h[2]);
-        System.out.println(this.ip);
-        System.out.println(msg);
-        System.out.println("Fim do teste");
-        */
-
-        if(h[2] != this.ip){
+        if(h[2].equals(this.ip)){
           System.out.println(msg);
         }
         

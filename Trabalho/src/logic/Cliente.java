@@ -22,15 +22,21 @@ public class Cliente {
    
    private String host;
    private int porta;
+   private String ip;
    
    public Cliente (String host, int porta) {
      this.host = host;
      this.porta = porta;
+     this.ip = "";
    }
    
    public void executa() throws UnknownHostException, IOException {
      Socket cliente = new Socket(this.host, this.porta);
      System.out.println("O cliente se conectou ao servidor!");
+
+     for (Byte s : cliente.getInetAddress().getAddress()) {
+      this.ip += s;
+     }
  
      // thread para receber mensagens do servidor
      Recebedor r = new Recebedor(cliente.getInputStream(), cliente.getInetAddress().getHostAddress());
@@ -42,7 +48,8 @@ public class Cliente {
 
      while (teclado.hasNextLine()) {
 
-       saida.println("O usuário " + cliente.getInetAddress().getHostAddress() + " disse: " + teclado.nextLine());
+
+       saida.println("O usuário " + ip + " disse: " + teclado.nextLine());
 
      }
      
