@@ -8,23 +8,33 @@ package logic;
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
+import javax.swing.*;
 
 /**
  *
  * @author Virginia
  */
-public class Cliente {
+public class ClienteChat extends JFrame {
    public static void main(String[] args) 
          throws UnknownHostException, IOException {
      // dispara cliente
-     new Cliente("192.168.51.124", 12345).executa();
+     ClienteChat Cliente1 = new ClienteChat("192.168.51.124", 12345);
+     Cliente1.setSize(600,600);
+     Cliente1.setVisible(true);
+     Cliente1.executa();
+
    }
    
    private String host;
    private int porta;
    private String ip;
+
+   private JTextArea AreaDoChat;
+    private JTextField CampoChat;
+    private JButton BotaoEnviar;
    
-   public Cliente (String host, int porta) {
+   public ClienteChat (String host, int porta) {
+    super("Cliente Chat");
      this.host = host;
      this.porta = porta;
      this.ip = "";
