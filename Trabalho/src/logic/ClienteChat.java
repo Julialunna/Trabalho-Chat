@@ -105,7 +105,7 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
      PrintStream saida = new PrintStream(cliente.getOutputStream());
 
      while (teclado.hasNextLine()) {
-       cliente1.AreaDoChat.append("Usuário " + ip + " : "+cliente1.CampoChat.getText()+"\n");
+       saida.print("Usuário " + ip + " : " +cliente1.CampoChat.getText());
        saida.println("Usuário " + ip + " : " + teclado.nextLine());
 
      }
@@ -120,7 +120,6 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
     // TODO Auto-generated method stub
     if(e.getSource()==BotaoEnviar){
       String msg = CampoChat.getText();
-      CampoChat.setText("");
       AreaDoChat.append(msg+"\n");
       System.out.println(msg+"\n");
     }
