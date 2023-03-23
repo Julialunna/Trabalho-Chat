@@ -68,7 +68,7 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
       Cliente1.ChatJFrame.add(Cliente1.Painel);
       Cliente1.AreaDoChat.setFont(new Font("Serif", Font.BOLD, 20));
       Cliente1.ChatJFrame.setVisible(true);
-      Cliente1.executa();
+      Cliente1.executa(Cliente1);
 
    }
    
@@ -90,8 +90,8 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
      this.ip = "";
    }
    
-   public void executa() throws UnknownHostException, IOException {
-     Socket cliente = new Socket(this.host, this.porta);
+   public void executa(ClienteChat cliente1) throws UnknownHostException, IOException {
+    Socket cliente = new Socket(this.host, this.porta);
      System.out.println("O cliente se conectou ao servidor!");
 
      this.ip = cliente.getLocalAddress().toString().replace("/","");
@@ -105,7 +105,7 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
      PrintStream saida = new PrintStream(cliente.getOutputStream());
 
      while (teclado.hasNextLine()) {
-
+       cliente1.AreaDoChat.append("Usuário " + ip + " : "+cliente1.CampoChat.getText()+"\n");
        saida.println("Usuário " + ip + " : " + teclado.nextLine());
 
      }
@@ -122,7 +122,7 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
       String msg = CampoChat.getText();
       CampoChat.setText("");
       AreaDoChat.append(msg+"\n");
-      System.out.println("Usuário " + ip + " : " + msg);
+      System.out.println(msg+"\n");
     }
   }
 
