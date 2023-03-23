@@ -122,7 +122,7 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
       String msg = CampoChat.getText();
       CampoChat.setText("");
       AreaDoChat.append(msg+"\n");
-      System.out.println(msg+"\n");
+      System.out.println("Usuário " + ip + " : " + msg);
     }
   }
 
