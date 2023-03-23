@@ -103,4 +103,28 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
      teclado.close();
      cliente.close();    
    }
+
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+  }
+
+  @Override
+  public void keyTyped(KeyEvent e) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'keyTyped'");
+  }
+
+  @Override
+  public void keyPressed(KeyEvent e) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'keyPressed'");
+  }
+
+  @Override
+  public void keyReleased(KeyEvent e) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'keyReleased'");
+  }
  }
