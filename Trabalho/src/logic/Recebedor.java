@@ -33,6 +33,7 @@ public class Recebedor implements Runnable {
 
         if(!h[1].equals(this.ip)){
           System.out.println(msg);
+          
         }
         
      }
