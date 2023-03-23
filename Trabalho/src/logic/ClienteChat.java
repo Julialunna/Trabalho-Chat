@@ -24,7 +24,7 @@ import java.awt.event.KeyListener;
  *
  * @author Virginia
  */
-public class ClienteChat extends JFrame {
+public class ClienteChat extends JFrame implements KeyListener, ActionListener {
    public static void main(String[] args) 
          throws UnknownHostException, IOException {
      // dispara cliente
