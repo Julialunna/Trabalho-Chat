@@ -28,7 +28,7 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
    public static void main(String[] args) 
          throws UnknownHostException, IOException {
      // dispara cliente
-      ClienteChat Cliente1 = new ClienteChat("10.0.0.35", 12345);
+      ClienteChat Cliente1 = new ClienteChat("192.168.15.78", 12345);
       Cliente1.ChatJFrame = new JFrame("Chat");
       Cliente1.ChatJFrame.setSize(600,600);
 
