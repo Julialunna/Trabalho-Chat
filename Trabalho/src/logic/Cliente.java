@@ -17,7 +17,7 @@ public class Cliente {
    public static void main(String[] args) 
          throws UnknownHostException, IOException {
      // dispara cliente
-     new Cliente("192.168.51.124", 12345).executa();
+     new Cliente("10.0.0.35", 12345).executa();
    }
    
    private String host;
