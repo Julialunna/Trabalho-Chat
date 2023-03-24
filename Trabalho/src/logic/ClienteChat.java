@@ -114,8 +114,7 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
      }
      
      saida.close();
-     teclado.close();
-     cliente.close();    
+     teclado.close(); 
    }
 
 
