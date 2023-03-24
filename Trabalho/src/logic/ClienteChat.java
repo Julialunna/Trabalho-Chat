@@ -93,7 +93,7 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
    }
    
    public void executa(ClienteChat cliente1) throws UnknownHostException, IOException {
-    this.cliente = new Socket(this.host, this.porta);
+    Socket cliente = new Socket(this.host, this.porta);
      System.out.println("O cliente se conectou ao servidor!");
 
      this.ip = this.cliente.getLocalAddress().toString().replace("/","");
@@ -111,7 +111,6 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
        saida.println("Usuário " + ip + " : " + teclado.nextLine());
 
      }
-     
      saida.close();
      teclado.close();
      cliente.close();    
