@@ -24,11 +24,11 @@ import java.awt.event.KeyListener;
  *
  * @author Virginia
  */
-public class ClienteChat extends JFrame implements KeyListener, ActionListener {
+public class ClienteTeste extends JFrame implements KeyListener, ActionListener {
    public static void main(String[] args) 
          throws UnknownHostException, IOException {
      // dispara cliente
-      ClienteChat Cliente1 = new ClienteChat("192.168.15.78", 12345);
+      ClienteTeste Cliente1 = new ClienteTeste("192.168.15.78", 12345);
       Cliente1.ChatJFrame = new JFrame("Chat");
       Cliente1.ChatJFrame.setSize(600,600);
 
@@ -86,14 +86,14 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
     public Socket cliente;
     public Recebedor r;
    
-   public ClienteChat (String host, int porta) {
+   public ClienteTeste (String host, int porta) {
     super("Cliente Chat");
      this.host = host;
      this.porta = porta;
      this.ip = "";
    }
    
-   public void executa(ClienteChat cliente1) throws UnknownHostException, IOException {
+   public void executa(ClienteTeste cliente1) throws UnknownHostException, IOException {
     this.cliente = new Socket(this.host, this.porta);
      System.out.println("O cliente se conectou ao servidor!");
 
