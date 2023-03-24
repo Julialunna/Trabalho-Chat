@@ -84,6 +84,7 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
     public JFrame ChatJFrame;
 
     public Socket cliente;
+    public Recebedor r;
    
    public ClienteChat (String host, int porta) {
     super("Cliente Chat");
@@ -99,7 +100,7 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
      this.ip = this.cliente.getLocalAddress().toString().replace("/","");
  
      // thread para receber mensagens do servidor
-     Recebedor r = new Recebedor(cliente.getInputStream(), ip);
+     this.r = new Recebedor(cliente.getInputStream(), ip);
      new Thread(r).start();
      
      // lê msgs do teclado e manda pro servidor
@@ -122,17 +123,13 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
   public void actionPerformed(ActionEvent e) {
     try (
       PrintStream saida =  new PrintStream(this.cliente.getOutputStream())) {
-    
-
       if(e.getSource()==BotaoEnviar){
         String msg = CampoChat.getText();
         AreaDoChat.append(msg+"\n");
         saida.println(msg+"\n");
       }
-
     } catch (IOException e1) {
-        
-      e1.printStackTrace();
+      System.out.println(e1);
     }
   }
 
