@@ -30,11 +30,13 @@ public class Recebedor implements Runnable {
      while (s.hasNextLine()) {
         String msg = s.nextLine();
         String[] h = msg.split(" ");        
-
-        if(!h[1].equals(this.ip)){
-          System.out.println(msg);
-          
+        if(h.length > 1){
+          if(!h[1].equals(this.ip)){
+            System.out.println(msg);
+            
+          }
         }
+        
         
      }
    }
