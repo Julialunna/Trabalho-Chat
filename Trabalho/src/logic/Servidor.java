@@ -41,7 +41,7 @@ public class Servidor {
        System.out.println("Nova conexão com o cliente " +   
          cliente.getInetAddress().getHostAddress()
        );
-       distribuiMensagem("Usuário "+cliente.getInetAddress().getHostAddress()+" entrou no chat");
+       distribuiMensagem("Usuário "+cliente.getInetAddress().getHostAddress()+" entrou no chat"+"\n");
        
        // adiciona saida do cliente à lista
        PrintStream ps = new PrintStream(cliente.getOutputStream());

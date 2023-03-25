@@ -37,7 +37,7 @@ public class Recebedor implements Runnable {
         buffer.add(msg);
         String[] h = msg.split(" ");      
         if(!h[1].equals(this.ip)){
-          cliente1.AreaDoChat.append(msg);
+          cliente1.AreaDoChat.append(msg+"\n");
           System.out.println(msg);
         }
         
