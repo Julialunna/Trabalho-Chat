@@ -24,7 +24,7 @@ import java.awt.event.KeyListener;
  *
  * @author Virginia
  */
-public class ClienteTeste extends JFrame implements KeyListener, ActionListener {
+public class ClienteTeste extends JFrame implements KeyListener, ActionListener, Runnable {
    public static void main(String[] args) 
          throws UnknownHostException, IOException {
      // dispara cliente
@@ -102,6 +102,7 @@ public class ClienteTeste extends JFrame implements KeyListener, ActionListener 
      // thread para receber mensagens do servidor
      this.r = new Recebedor(cliente.getInputStream(), ip);
      new Thread(r).start();
+     new Thread(cliente1).start();
      
      // lê msgs do teclado e manda pro servidor
      Scanner teclado = new Scanner(System.in);
@@ -128,13 +129,35 @@ public class ClienteTeste extends JFrame implements KeyListener, ActionListener 
         AreaDoChat.append("Você: "+msg+"\n");
         saida.println("Usuário " + this.ip + " : "+msg);
       }
-
       //saida.close();
     } catch (IOException e1) {
       System.out.println(e1);
     }
   }
-
+  
+  @Override
+  public void run() {
+    // TODO Auto-generated method 
+    System.out.println("entrei RUN");
+    for(int j=0;j<this.r.buffer.size();j++){
+      System.out.println("depois entrou no run:");
+      System.out.println(this.r.buffer.get(j));
+    }
+    while(true){
+      if(this.r.buffer.size()>0){
+        System.out.println("entrei tem buffer");
+        for(int i=0;i<this.r.buffer.size();i++){
+          System.out.println(i+this.r.buffer.get(i));
+          AreaDoChat.append(this.r.buffer.get(i));
+          this.r.buffer.remove(i);
+          for(int j=0;j<this.r.buffer.size();j++){
+            System.out.println("depois que mandou:");
+            System.out.println(this.r.buffer.get(j));
+          }
+        }
+      }
+    }
+  }
   @Override
   public void keyTyped(KeyEvent e) {
     // TODO Auto-generated method stub
@@ -149,4 +172,5 @@ public class ClienteTeste extends JFrame implements KeyListener, ActionListener 
   public void keyReleased(KeyEvent e) {
     // TODO Auto-generated method stub
   }
+
  }
