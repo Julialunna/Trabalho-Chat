@@ -2,6 +2,7 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+ * 
  */
 package logic;
 
@@ -41,7 +42,7 @@ public class Servidor {
        System.out.println("Nova conexão com o cliente " +   
          cliente.getInetAddress().getHostAddress()
        );
-       //distribuiMensagem("Usuário "+cliente.getInetAddress().getHostAddress()+" entrou no chat");
+       distribuiMensagem("Usuário "+cliente.getInetAddress().getHostAddress()+" entrou no chat");
        
        // adiciona saida do cliente à lista
        PrintStream ps = new PrintStream(cliente.getOutputStream());

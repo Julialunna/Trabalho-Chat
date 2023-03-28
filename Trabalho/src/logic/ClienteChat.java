@@ -1,7 +1,13 @@
+
+
+
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+ * 
  */
 package logic;
 
@@ -56,7 +62,7 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
 
       Cliente1.PainelInferior.add(Cliente1.CampoChat, BorderLayout.CENTER);
     
-      Cliente1.AreaDoChat.setFont(new Font("Serif", Font.BOLD, 20));
+      Cliente1.AreaDoChat.setFont(new Font("Serif", Font.BOLD, 10));
       Cliente1.PainelInferior.add(Cliente1.BotaoEnviar, BorderLayout.EAST);
 
 
@@ -110,7 +116,6 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
      while (teclado.hasNextLine()) {
        saida.println("Usuário " + ip + " : "  + cliente1.CampoChat.getText());
        saida.println("Usuário " + ip + " : " + teclado.nextLine());
-
      }
      
      saida.close();
@@ -127,6 +132,7 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
         String msg = CampoChat.getText();
         AreaDoChat.append("Você: "+msg+"\n");
         saida.println("Usuário " + this.ip + " : "+msg);
+        CampoChat.setText("");
       }
 
       //saida.close();
@@ -150,13 +156,15 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
         String msg = CampoChat.getText();
         AreaDoChat.append("Você: "+msg+"\n");
         saida.println("Usuário " + this.ip + " : "+msg);
+        CampoChat.setText("");
         //saida.close();
-        
+
       } catch (IOException e1) {
         System.out.println(e1);
       }
 
     }
+    // TODO Auto-generated method stub
   }
 
   @Override
