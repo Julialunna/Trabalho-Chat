@@ -1,6 +1,3 @@
-
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -79,7 +76,7 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
    private int porta;
    private String ip;
 
-    public JTextArea AreaDoChat;
+    private JTextArea AreaDoChat;
     private JTextField CampoChat;
     private JButton BotaoEnviar;
     public JPanel Painel;
@@ -103,7 +100,7 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
      this.ip = this.cliente.getLocalAddress().toString().replace("/","");
  
      // thread para receber mensagens do servidor
-     this.r = new Recebedor(cliente.getInputStream(), ip, cliente1);
+     this.r = new Recebedor(cliente.getInputStream(), ip);
      new Thread(r).start();
      
      // lê msgs do teclado e manda pro servidor

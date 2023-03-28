@@ -17,9 +17,10 @@ public class Recebedor implements Runnable {
  
    private InputStream servidor;
    private String ip;
-   public ClienteChat cliente1;
+   public ClienteTeste cliente1;
+   public static ArrayList<String> buffer= new ArrayList();
  
-   public Recebedor(InputStream servidor, String ip, ClienteChat cliente1) {
+   public Recebedor(InputStream servidor, String ip, ClienteTeste cliente1) {
      this.servidor = servidor;
      this.ip = ip;
      this.cliente1=cliente1;
@@ -33,6 +34,7 @@ public class Recebedor implements Runnable {
      
      while (s.hasNextLine()) {
         String msg = s.nextLine();
+        buffer.add(msg);
         String[] h = msg.split(" ");      
         if(!h[1].equals(this.ip)){
           cliente1.AreaDoChat.append(msg+"\n");
