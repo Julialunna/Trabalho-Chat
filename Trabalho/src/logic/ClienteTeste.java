@@ -24,11 +24,11 @@ import java.awt.event.KeyListener;
  *
  * @author Virginia
  */
-public class ClienteChat extends JFrame implements KeyListener, ActionListener {
+public class ClienteTeste extends JFrame implements KeyListener, ActionListener {
    public static void main(String[] args) 
          throws UnknownHostException, IOException {
      // dispara cliente
-      ClienteChat Cliente1 = new ClienteChat("192.168.15.78", 12345);
+      ClienteTeste Cliente1 = new ClienteTeste("192.168.15.78", 12345);
       Cliente1.ChatJFrame = new JFrame("Chat");
       Cliente1.ChatJFrame.setSize(600,600);
 
@@ -76,9 +76,9 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
    private int porta;
    private String ip;
 
-    private JTextArea AreaDoChat;
-    private JTextField CampoChat;
-    private JButton BotaoEnviar;
+    public JTextArea AreaDoChat;
+    public JTextField CampoChat;
+    public JButton BotaoEnviar;
     public JPanel Painel;
     public JPanel PainelInferior;
     public JFrame ChatJFrame;
@@ -86,26 +86,28 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
     public Socket cliente;
     public Recebedor r;
    
-   public ClienteChat (String host, int porta) {
+   public ClienteTeste (String host, int porta) {
     super("Cliente Chat");
      this.host = host;
      this.porta = porta;
      this.ip = "";
    }
    
-   public void executa(ClienteChat cliente1) throws UnknownHostException, IOException {
+   public void executa(ClienteTeste cliente1) throws UnknownHostException, IOException {
     this.cliente = new Socket(this.host, this.porta);
      System.out.println("O cliente se conectou ao servidor!");
-
      this.ip = this.cliente.getLocalAddress().toString().replace("/","");
  
      // thread para receber mensagens do servidor
-     this.r = new Recebedor(cliente.getInputStream(), ip);
+     r = new Recebedor(cliente.getInputStream(), ip, cliente1);
      new Thread(r).start();
+     RecebeInterface recebe=new RecebeInterface(r, cliente1);
      
      // lê msgs do teclado e manda pro servidor
      Scanner teclado = new Scanner(System.in);
      PrintStream saida = new PrintStream(cliente.getOutputStream());
+
+    
 
      while (teclado.hasNextLine()) {
        saida.println("Usuário " + ip + " : "  + cliente1.CampoChat.getText());
@@ -128,13 +130,13 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
         AreaDoChat.append("Você: "+msg+"\n");
         saida.println("Usuário " + this.ip + " : "+msg);
       }
-
       //saida.close();
     } catch (IOException e1) {
       System.out.println(e1);
     }
   }
-
+  
+  
   @Override
   public void keyTyped(KeyEvent e) {
     // TODO Auto-generated method stub
@@ -149,4 +151,5 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
   public void keyReleased(KeyEvent e) {
     // TODO Auto-generated method stub
   }
+
  }
