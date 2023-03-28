@@ -24,7 +24,7 @@ import java.awt.event.KeyListener;
  *
  * @author Virginia
  */
-public class ClienteTeste extends JFrame implements KeyListener, ActionListener {
+public class ClienteTeste extends JFrame implements KeyListener, ActionListener, Runnable {
    public static void main(String[] args) 
          throws UnknownHostException, IOException {
      // dispara cliente
@@ -76,9 +76,9 @@ public class ClienteTeste extends JFrame implements KeyListener, ActionListener 
    private int porta;
    private String ip;
 
-    public JTextArea AreaDoChat;
-    public JTextField CampoChat;
-    public JButton BotaoEnviar;
+    private JTextArea AreaDoChat;
+    private JTextField CampoChat;
+    private JButton BotaoEnviar;
     public JPanel Painel;
     public JPanel PainelInferior;
     public JFrame ChatJFrame;
@@ -96,18 +96,17 @@ public class ClienteTeste extends JFrame implements KeyListener, ActionListener 
    public void executa(ClienteTeste cliente1) throws UnknownHostException, IOException {
     this.cliente = new Socket(this.host, this.porta);
      System.out.println("O cliente se conectou ao servidor!");
+
      this.ip = this.cliente.getLocalAddress().toString().replace("/","");
  
      // thread para receber mensagens do servidor
-     r = new Recebedor(cliente.getInputStream(), ip, cliente1);
+     this.r = new Recebedor(cliente.getInputStream(), ip);
      new Thread(r).start();
-     RecebeInterface recebe=new RecebeInterface(r, cliente1);
+     new Thread(cliente1).start();
      
      // lê msgs do teclado e manda pro servidor
      Scanner teclado = new Scanner(System.in);
      PrintStream saida = new PrintStream(cliente.getOutputStream());
-
-    
 
      while (teclado.hasNextLine()) {
        saida.println("Usuário " + ip + " : "  + cliente1.CampoChat.getText());
@@ -136,7 +135,29 @@ public class ClienteTeste extends JFrame implements KeyListener, ActionListener 
     }
   }
   
-  
+  @Override
+  public void run() {
+    // TODO Auto-generated method 
+    System.out.println("entrei RUN");
+    for(int j=0;j<this.r.buffer.size();j++){
+      System.out.println("depois entrou no run:");
+      System.out.println(this.r.buffer.get(j));
+    }
+    while(true){
+      if(this.r.buffer.size()>0){
+        System.out.println("entrei tem buffer");
+        for(int i=0;i<this.r.buffer.size();i++){
+          System.out.println(i+this.r.buffer.get(i));
+          AreaDoChat.append(this.r.buffer.get(i));
+          this.r.buffer.remove(i);
+          for(int j=0;j<this.r.buffer.size();j++){
+            System.out.println("depois que mandou:");
+            System.out.println(this.r.buffer.get(j));
+          }
+        }
+      }
+    }
+  }
   @Override
   public void keyTyped(KeyEvent e) {
     // TODO Auto-generated method stub

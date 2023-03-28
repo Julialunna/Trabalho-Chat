@@ -17,13 +17,11 @@ public class Recebedor implements Runnable {
  
    private InputStream servidor;
    private String ip;
-   public ClienteTeste cliente1;
-   public static ArrayList<String> buffer= new ArrayList();
+   public ArrayList<String> buffer = new ArrayList();
  
-   public Recebedor(InputStream servidor, String ip, ClienteTeste cliente1) {
+   public Recebedor(InputStream servidor, String ip) {
      this.servidor = servidor;
      this.ip = ip;
-     this.cliente1=cliente1;
    }
  
    @Override
@@ -34,13 +32,11 @@ public class Recebedor implements Runnable {
      
      while (s.hasNextLine()) {
         String msg = s.nextLine();
-        buffer.add(msg);
+        this.buffer.add(msg);
         String[] h = msg.split(" ");      
         if(!h[1].equals(this.ip)){
-          cliente1.AreaDoChat.append(msg);
-          System.out.println(msg);
-        }
-        
+            System.out.println(msg);
+          }
      }
    }
  }
