@@ -17,9 +17,9 @@ public class Recebedor implements Runnable {
  
    private InputStream servidor;
    private String ip;
-   public ClienteTeste cliente1;
+   public ClienteChat cliente1;
  
-   public Recebedor(InputStream servidor, String ip, ClienteTeste cliente1) {
+   public Recebedor(InputStream servidor, String ip, ClienteChat cliente1) {
      this.servidor = servidor;
      this.ip = ip;
      this.cliente1=cliente1;

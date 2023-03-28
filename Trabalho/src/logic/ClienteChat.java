@@ -129,7 +129,6 @@ public class ClienteChat extends JFrame implements KeyListener, ActionListener {
         AreaDoChat.append("Você: "+msg+"\n");
         saida.println("Usuário " + this.ip + " : "+msg);
       }
-
       //saida.close();
     } catch (IOException e1) {
       System.out.println(e1);
