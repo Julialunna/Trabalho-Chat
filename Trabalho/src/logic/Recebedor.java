@@ -29,6 +29,7 @@ public class Recebedor implements Runnable {
    public void run() {
      // recebe msgs do servidor e imprime na tela
      Scanner s = new Scanner(this.servidor);
+     int teste=0;
      
      while (s.hasNextLine()) {
         String msg = s.nextLine();
