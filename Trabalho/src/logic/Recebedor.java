@@ -6,7 +6,6 @@
 package logic;
 
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -17,7 +16,6 @@ public class Recebedor implements Runnable {
  
    private InputStream servidor;
    private String ip;
-   public ArrayList<String> buffer = new ArrayList();
  
    public Recebedor(InputStream servidor, String ip) {
      this.servidor = servidor;
@@ -28,15 +26,19 @@ public class Recebedor implements Runnable {
    public void run() {
      // recebe msgs do servidor e imprime na tela
      Scanner s = new Scanner(this.servidor);
-     int teste=0;
      
      while (s.hasNextLine()) {
         String msg = s.nextLine();
-        this.buffer.add(msg);
-        String[] h = msg.split(" ");      
+        String[] h = msg.split(" "); 
+        for(int i=0;i<h.length;i++){
+          System.out.println(h[i]);
+        }       
         if(!h[1].equals(this.ip)){
             System.out.println(msg);
           }
+
+        
+
      }
    }
  }
