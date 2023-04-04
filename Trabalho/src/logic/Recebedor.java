@@ -18,9 +18,9 @@ public class Recebedor implements Runnable {
  
    private InputStream servidor;
    private String ip;
-   public ClienteChat cliente1;
+   public ClienteTeste cliente1;
  
-   public Recebedor(InputStream servidor, String ip, ClienteChat cliente1) {
+   public Recebedor(InputStream servidor, String ip, ClienteTeste cliente1) {
      this.servidor = servidor;
      this.ip = ip;
      this.cliente1=cliente1;
@@ -35,7 +35,7 @@ public class Recebedor implements Runnable {
         String msg = s.nextLine();
         String[] h = msg.split(" ");      
         if(!h[1].equals(this.ip)){
-          cliente1.AreaDoChat.append(msg+"\n");
+          cliente1.interface1.AreaDoChat.append(msg+"\n");
           System.out.println(msg);
         }
         
