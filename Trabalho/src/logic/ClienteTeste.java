@@ -44,12 +44,6 @@ public class ClienteTeste  {
    private int porta;
    public String ip;
 
-    public JTextArea AreaDoChat;
-    private JTextField CampoChat;
-    private JButton BotaoEnviar;
-    public JPanel Painel;
-    public JPanel PainelInferior;
-    public JFrame ChatJFrame;
 
     public Socket cliente;
     public Recebedor r;
@@ -59,8 +53,7 @@ public class ClienteTeste  {
      //super("Cliente Chat");
      this.host = host;
      this.porta = porta;
-     this.ip = "";
-     
+     this.ip = ""; 
    }
    
    public void executa(ClienteTeste cliente1) throws UnknownHostException, IOException {
@@ -91,51 +84,4 @@ public class ClienteTeste  {
 }
 
 
-  /*@Override
-  public void actionPerformed(ActionEvent e) {
-    try {
-      PrintStream saida =  new PrintStream(this.cliente.getOutputStream());
-      if(e.getSource()==BotaoEnviar){
-        String msg = CampoChat.getText();
-        AreaDoChat.append("Você: "+msg+"\n");
-        saida.println("Usuário " + this.ip + " : "+msg);
-        CampoChat.setText("");
-      }
-
-      //saida.close();
-    } catch (IOException e1) {
-      System.out.println(e1);
-    }
-  }
-
-  @Override
-  public void keyTyped(KeyEvent e) {
-    // TODO Auto-generated method stub
-  }
-
-  @Override
-  public void keyPressed(KeyEvent e) {
-    if(e.getKeyCode() == KeyEvent.VK_ENTER){
-
-      try {
-        PrintStream saida =  new PrintStream(this.cliente.getOutputStream());
-        
-        String msg = CampoChat.getText();
-        AreaDoChat.append("Você: "+msg+"\n");
-        saida.println("Usuário " + this.ip + " : "+msg);
-        CampoChat.setText("");
-        //saida.close();
-
-      } catch (IOException e1) {
-        System.out.println(e1);
-      }
-
-    }
-    // TODO Auto-generated method stub
-  }
-
-  @Override
-  public void keyReleased(KeyEvent e) {
-    // TODO Auto-generated method stub
-  }
- }*/
+ 
